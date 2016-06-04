@@ -3,54 +3,30 @@ using System.Collections;
 using DG.Tweening;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Door : MonoBehaviour {
-	bool 		m_isPlayerOnTriggerZone;
-	bool 		m_isOpen;
+public class Door : TriggerAction {
+	bool 		m_isOn;
 	bool 		m_isAnimating;
-	BoxCollider m_TriggerZone;
 
-	void Awake(){
-		m_TriggerZone = GetComponent<BoxCollider> ();
-	}
+	public float YSize = 4.94f;
 
-	void OnTriggerEnter(Collider other){
-		if (other.gameObject.CompareTag ("Player")) {
-			m_isPlayerOnTriggerZone = true;
-		}
-	}
-
-	void OnTriggerExit(Collider other){
-		if (other.gameObject.CompareTag ("Player")) {
-			m_isPlayerOnTriggerZone = false;
-			CloseDoor ();
-		}
-	}
-
-	void Update(){
-		if (m_isPlayerOnTriggerZone && Input.GetKeyDown (KeyCode.O)) {
-			OpenDoor ();
-		}
-	}
-
-	void OpenDoor(){
-		if (!m_isOpen && !m_isAnimating) {
+	public override void SetOn(ActionTrigger trigger){
+		if (!m_isOn && !m_isAnimating) {
 			HintUI.ClearText (gameObject.GetInstanceID());
 			m_isAnimating = true;
-			transform.DOMoveY (0.1f - m_TriggerZone.size.y, 1).OnComplete(delegate() {
-				m_isOpen = true;
+			transform.DOMoveY (0.1f - YSize, 1).OnComplete(delegate() {
+				m_isOn = true;
 				m_isAnimating = false;
 
-				if(!m_isPlayerOnTriggerZone)
-					CloseDoor();
+				trigger.OnAnimationComplete(this);
 			});
 		}
 	}
 
-	void CloseDoor(){
-		if (m_isOpen) {
+	public override void SetOff(){
+		if (m_isOn) {
 			m_isAnimating = true;
 			transform.DOMoveY (0f, 1).OnComplete(delegate() {
-				m_isOpen = false;
+				m_isOn = false;
 				m_isAnimating = false;
 			});
 		}

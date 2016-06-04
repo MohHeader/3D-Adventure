@@ -14,6 +14,9 @@ public class CameraFollow : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		if (target == null)
+			return;
+		
 		// Create a postion the camera is aiming for based on the offset from the target.
 		Vector3 targetCamPos = target.position + offset;
 

@@ -9,7 +9,6 @@ public class PlayerInputController : MonoBehaviour {
 	public Vector3 	Move { get; protected set; }
 	public bool 	Jump { get; protected set; }
 	public bool 	Run  { get; protected set; }
-	public bool 	Fire { get; protected set; }
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +25,6 @@ public class PlayerInputController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Jump	= Input.GetButtonDown("Jump");
-		Fire	= Input.GetButton("Fire1");
 		Run		= Input.GetKey(KeyCode.LeftShift);
 
 		// read inputs

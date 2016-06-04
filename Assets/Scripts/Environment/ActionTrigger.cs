@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(BoxCollider))]
 public class ActionTrigger : MonoBehaviour {
 	public TriggerAction[] actions;
+	public bool AutoSetOn;
 	public bool AutoSetOff;
 	public bool OneUse;
 	public KeyCode key;
@@ -14,6 +15,10 @@ public class ActionTrigger : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.CompareTag ("Player")) {
 			m_IsPlayerOnTriggerZone = true;
+			if (AutoSetOn) {
+				foreach (var action in actions)
+					action.SetOn (this);
+			}
 		}
 	}
 

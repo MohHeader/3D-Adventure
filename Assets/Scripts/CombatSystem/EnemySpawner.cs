@@ -26,8 +26,9 @@ public class EnemySpawner : TriggerAction {
 	IEnumerator Spawn(){
 		while (m_IsOn) {
 			Vector3 pos = SpawnPositions [Random.Range (0, SpawnPositions.Length)].position;
-			GameObject GO = Instantiate (EnemyPrefab, pos, Quaternion.identity) as GameObject;
+			GameObject GO = SimplePool.Spawn (EnemyPrefab, pos, Quaternion.identity);
 			GO.GetComponent<MoveToward> ().Target = GameObject.FindGameObjectWithTag ("Player").transform;
+			GO.GetComponent<Health> ().Reset ();
 			Enemies.Add (GO);
 			yield return new WaitForSeconds (Random.Range (1f, 2.5f));
 		}

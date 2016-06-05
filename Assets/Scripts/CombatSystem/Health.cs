@@ -37,7 +37,7 @@ public class Health : MonoBehaviour {
 	void Death(){
 		if (OnDeath != null)
 			OnDeath ();
-		Destroy (gameObject);
+		SimplePool.Despawn (gameObject);
 	}
 
 	public event System.Action OnHealthChange;

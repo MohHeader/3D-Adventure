@@ -30,7 +30,7 @@ public class Harmful : MonoBehaviour {
 				if (health != null) {
 					health.TakeDamage (health.MaxHealth);
 				} else {
-					//SimplePool.Despawn (gameObject);
+					SimplePool.Despawn (gameObject);
 				}
 			}
 		} else {

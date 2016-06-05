@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemySpawner : TriggerAction {
-	public Transform[] SpawnPositions;
-	public GameObject EnemyPrefab;
-	public List<GameObject> Enemies;
+	public Transform[]		SpawnPositions;
+	public Enemy			EnemyPrefab;
+	public List<Enemy>	Enemies;
+	public int				MaxConcurrentEmenies;
 
 	bool m_IsOn;
 
@@ -19,17 +20,26 @@ public class EnemySpawner : TriggerAction {
 
 		foreach (var enemy in Enemies) {
 			if (enemy != null)
-				Destroy (enemy);
+				SimplePool.Despawn (enemy.gameObject);
 		}
 	}
 
 	IEnumerator Spawn(){
 		while (m_IsOn) {
-			Vector3 pos = SpawnPositions [Random.Range (0, SpawnPositions.Length)].position;
-			GameObject GO = SimplePool.Spawn (EnemyPrefab, pos, Quaternion.identity);
-			GO.GetComponent<MoveToward> ().Target = GameObject.FindGameObjectWithTag ("Player").transform;
-			GO.GetComponent<Health> ().Reset ();
-			Enemies.Add (GO);
+			if(MaxConcurrentEmenies <= 0 || Enemies.Count < MaxConcurrentEmenies){
+				Vector3 pos = SpawnPositions [Random.Range (0, SpawnPositions.Length)].position;
+				GameObject GO = SimplePool.Spawn (EnemyPrefab.gameObject, pos, Quaternion.identity);
+				Enemy enemy = GO.GetComponent<Enemy> ();
+
+				enemy.SetTarget (GameMaster.Instance.CurrentPlayer);
+
+				Enemies.Add (enemy);
+
+				enemy.OnDeath += delegate() {
+					if(Enemies.Contains(enemy))
+						Enemies.Remove(enemy);
+				};
+			}
 			yield return new WaitForSeconds (Random.Range (1f, 2.5f));
 		}
 	}

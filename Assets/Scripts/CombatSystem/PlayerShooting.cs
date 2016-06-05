@@ -10,10 +10,14 @@ public class PlayerShooting : MonoBehaviour
 	int  			shootableMask;
 	LineRenderer 	gunLine;                           // Reference to the line renderer.
 
+	private Plane zeroYPlane;
+
 	void Awake () {
 		// Set up the references.
 		gunLine = GetComponent <LineRenderer> ();
 		shootableMask = LayerMask.GetMask ("Environment", "Shootable");
+
+		zeroYPlane = new Plane (Vector3.up, ShootPosition.position);
 	}
 
 	void Update () {
@@ -28,15 +32,22 @@ public class PlayerShooting : MonoBehaviour
 		if (Input.GetButtonDown ("Fire1")) {
 			Vector3 Direction = Vector3.zero;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
-			RaycastHit[] hits = Physics.RaycastAll (ray, 100);
+//			RaycastHit[] hits = Physics.RaycastAll (ray, 100);
+//
+//			foreach(RaycastHit hit in hits){
+//
+//				if (hit.transform.CompareTag ("Ground")) {
+//					Direction = hit.point - ShootPosition.transform.position;
+//					Direction.y = 0;
+//				}
+//			}
 
-			foreach(RaycastHit hit in hits){
+			float _hitDistance;
 
-				if (hit.transform.CompareTag ("Ground")) {
-					Direction = hit.point - ShootPosition.transform.position;
-					Direction.y = 0;
-				}
-			}
+			zeroYPlane.Raycast(ray, out _hitDistance);
+			Vector3 MousePosition = ray.GetPoint(_hitDistance);
+
+			Direction = MousePosition - ShootPosition.position;
 
 			if (Direction != Vector3.zero) {
 				timer = 0;
@@ -53,10 +64,13 @@ public class PlayerShooting : MonoBehaviour
 					if (enemyHealth != null) {
 						// ... the enemy should take damage.
 						enemyHealth.TakeDamage (Weapon.DamageAmount);
+						gunLine.SetPosition (1, enemyHealth.transform.position);
+					} else {
+						gunLine.SetPosition (1, shootHit.point);
 					}
 
 					// Set the second position of the line renderer to the point the raycast hit.
-					gunLine.SetPosition (1, shootHit.point);
+
 				}
 				// If the raycast didn't hit anything on the shootable layer...
 				else {

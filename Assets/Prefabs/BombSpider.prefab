@@ -14,8 +14,9 @@ GameObject:
   - 114: {fileID: 11498270}
   - 114: {fileID: 11447528}
   - 114: {fileID: 11466070}
+  - 114: {fileID: 11447612}
   m_Layer: 8
-  m_Name: Enemy1
+  m_Name: BombSpider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,6 +92,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   Speed: 5
+--- !u!114 &11447612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19242c453c4893b6ab8abf6a53823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11466070
 MonoBehaviour:
   m_ObjectHideFlags: 1

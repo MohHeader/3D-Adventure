@@ -3,8 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 	public float MaxHealth;
-
-	float m_CurrentHealth;
+	public float CurrentHealth { get; protected set; }
 
 	// Use this for initialization
 	void Awake () {
@@ -12,17 +11,22 @@ public class Health : MonoBehaviour {
 	}
 
 	public void TakeDamage(float amount){
-		m_CurrentHealth -= amount;
+		CurrentHealth -= amount;
 
-		if (m_CurrentHealth <= 0)
+		if (OnHealthChange != null)
+			OnHealthChange ();
+
+		if (CurrentHealth <= 0)
 			Death ();
 	}
 
 	public void Reset(){
-		m_CurrentHealth = MaxHealth;
+		CurrentHealth = MaxHealth;
 	}
 
 	void Death(){
 		Destroy (gameObject);
 	}
+
+	public event System.Action OnHealthChange;
 }

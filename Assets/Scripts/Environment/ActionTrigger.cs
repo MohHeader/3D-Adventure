@@ -3,11 +3,11 @@ using System.Collections;
 
 [RequireComponent(typeof(BoxCollider))]
 public class ActionTrigger : MonoBehaviour {
-	public TriggerAction[] actions;
-	public bool AutoSetOn;
-	public bool AutoSetOff;
-	public bool OneUse;
-	public KeyCode key;
+	public TriggerAction[]	actions;
+	public bool 			AutoSetOn;
+	public bool 			AutoSetOff;
+	public bool 			OneUse;
+	public KeyCode 			key;
 
 	bool m_IsPlayerOnTriggerZone;
 

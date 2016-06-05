@@ -30,11 +30,14 @@ public class ConversationManager : Singleton<ConversationManager> {
 	}
 
 	IEnumerator DisplayConversation(Conversation conversation){
+		GameState oldState = GameStateMaster.Instance.State;
+		GameStateMaster.Instance.SetState (GameState.Conversation);
 		m_ConversationUI.gameObject.SetActive (true);
 		foreach (var conversationLine in conversation.ConversationLines) {
 			m_ConversationUI.SetConversation (conversationLine);
 			yield return new WaitForSeconds(conversationLine.Duration);
 		}
 		m_ConversationUI.gameObject.SetActive (false);
+		GameStateMaster.Instance.SetState (oldState);
 	}
 }

@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	public void Move(Vector3 Move, bool Jump, bool Run){
+		if(!GameStateMaster.Instance.IsMovable() )
+			return;
+		
 		if (m_CharacterController.isGrounded) {
 			moveDirection = Move;
 			moveDirection = transform.TransformDirection(Move);

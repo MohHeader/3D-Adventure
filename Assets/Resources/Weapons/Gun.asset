@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c07f30562fa748649e1ba73f58511d1, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
-  WeaponName: Gun
+  ItemName: Gun
   DamageAmount: 2
   Range: 100
   CoolDownTime: 0.2

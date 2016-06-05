@@ -9,6 +9,7 @@ public class PlayerInputController : MonoBehaviour {
 	public Vector3 	Move { get; protected set; }
 	public bool 	Jump { get; protected set; }
 	public bool 	Run  { get; protected set; }
+	public bool 	Crouch  { get; protected set; }
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class PlayerInputController : MonoBehaviour {
 	void Update () {
 		Jump	= Input.GetButtonDown("Jump");
 		Run		= Input.GetKey(KeyCode.LeftShift);
+		Crouch	= Input.GetKey(KeyCode.Z);
 
 		// read inputs
 		float h = Input.GetAxis("Horizontal");

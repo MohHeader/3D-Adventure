@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 		m_CharacterController = GetComponent<CharacterController> ();
 	}
 
-	public void Move(Vector3 Move, bool Jump, bool Run){
+	public void Move(Vector3 Move, bool Jump, bool Run, bool Crouch){
 		if(!GameStateMaster.Instance.IsMovable() )
 			return;
 		
@@ -28,5 +28,11 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		moveDirection.y -= Gravity * Time.deltaTime;
 		m_CharacterController.Move(moveDirection * Time.deltaTime);
+
+		if (Crouch) {
+			transform.localScale = new Vector3 (1,0.4f,1);
+		} else {
+			transform.localScale = new Vector3 (1,1,1);
+		}
 	}
 }

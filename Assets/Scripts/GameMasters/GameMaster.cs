@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameMaster : Singleton<GameMaster> {
+	public Player CurrentPlayer;
 
 	protected GameMaster(){}
 

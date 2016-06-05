@@ -9,14 +9,18 @@ public class Player : MonoBehaviour {
 	PlayerMovement			m_PlayerMovement;
 	Health					m_PlayerHealth;
 
+	public Inventory		Inventory { get; protected set; }
+
 	// Use this for initialization
 	void Start () {
 		m_InputController	= GetComponent<PlayerInputController> ();
 		m_PlayerMovement	= GetComponent<PlayerMovement> ();
 		m_PlayerHealth		= GetComponent<Health> ();
 
+		Inventory			= GetComponent<Inventory> ();
+
 		m_InputController.OnControllerUpdate += delegate() {
-			m_PlayerMovement.Move(m_InputController.Move, m_InputController.Jump, m_InputController.Run );
+			m_PlayerMovement.Move(m_InputController.Move, m_InputController.Jump, m_InputController.Run, m_InputController.Crouch );
 		};
 
 		m_PlayerHealth.OnDeath += delegate() {

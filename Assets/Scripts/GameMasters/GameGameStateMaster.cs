@@ -4,7 +4,8 @@ using System.Collections;
 public enum GameState{
 	Normal,
 	Conversation,
-	Fight
+	Fight,
+	Win
 }
 
 public class GameStateMaster : Singleton<GameStateMaster> {

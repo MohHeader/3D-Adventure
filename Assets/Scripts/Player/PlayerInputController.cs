@@ -26,7 +26,7 @@ public class PlayerInputController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Jump	= Input.GetButtonDown("Jump");
-		Run		= Input.GetKey(KeyCode.LeftShift);
+		Run		= Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 		Crouch	= Input.GetKey(KeyCode.Z);
 
 		// read inputs

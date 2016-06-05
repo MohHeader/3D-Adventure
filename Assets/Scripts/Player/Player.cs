@@ -26,5 +26,7 @@ public class Player : MonoBehaviour {
 		m_PlayerHealth.OnDeath += delegate() {
 			GameMaster.Instance.Restart();
 		};
+
+		GameMaster.Instance.CurrentPlayer = this;
 	}
 }

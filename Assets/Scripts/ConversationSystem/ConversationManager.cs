@@ -1,15 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ConversationManager : Singleton<ConversationManager >
-{
-	//Is there a conversation going on
-	bool m_Talking = false;
-
-	//The current line of text being displayed
-	ConversationEntry m_CurrentConversationLine;
-
-	ConversationUI m_ConversationUI;
+public class ConversationManager : Singleton<ConversationManager> {
+	ConversationEntry	m_CurrentConversationLine;	//The current line of text being displayed
+	ConversationUI		m_ConversationUI;			// The ConversationUI ( the GUI part )
 
 	//Guarantee this will always be a singleton only – 
 	//can't use the constructor!

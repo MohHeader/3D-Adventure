@@ -11,7 +11,6 @@ public class Door : TriggerAction {
 
 	public override void SetOn(ActionTrigger trigger){
 		if (!m_isOn && !m_isAnimating) {
-			HintUI.ClearText (gameObject.GetInstanceID());
 			m_isAnimating = true;
 			transform.DOMoveY (0.1f - YSize, 1).OnComplete(delegate() {
 				m_isOn = true;

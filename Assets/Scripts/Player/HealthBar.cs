@@ -14,14 +14,14 @@ public class HealthBar : MonoBehaviour {
 		}
 
 		PlayerHealth.OnHealthChange += UpdateHealth;
+		GameStateMaster.Instance.OnStateChange += CheckState;
 
-		GameStateMaster.Instance.OnStateChange += delegate(GameState state) {
-			if(state == GameState.Fight){
-				gameObject.SetActive(true);
-			}else{
-				gameObject.SetActive(false);
-			}
-		};
+		CheckState (GameStateMaster.Instance.State);
+	}
+
+	void OnDestroy(){
+		if(GameStateMaster.Instance != null)
+			GameStateMaster.Instance.OnStateChange -= CheckState;
 	}
 
 	// Update is called once per frame
@@ -32,5 +32,13 @@ public class HealthBar : MonoBehaviour {
 			return;
 		}
 		HealthImageUI.fillAmount = PlayerHealth.CurrentHealth / PlayerHealth.MaxHealth;
+	}
+
+	void CheckState(GameState state){
+		if(state == GameState.Fight){
+			gameObject.SetActive(true);
+		}else{
+			gameObject.SetActive(false);
+		}
 	}
 }

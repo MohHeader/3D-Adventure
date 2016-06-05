@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4906def51a534ac3a23574a0f4c94af, type: 3}
+  m_Name: Mummy 2
+  m_EditorClassIdentifier: 
+  ConversationLines:
+  - SpeakingCharacterName: Mohammed
+    ConversationText: What ! I just left you there
+    Duration: 2
+  - SpeakingCharacterName: Mummy
+    ConversationText: HaHaHa,,,, It should be my brother
+    Duration: 3
+  - SpeakingCharacterName: Mummy
+    ConversationText: I am happy to see you here, Hope that my brother is fine
+    Duration: 2
+  - SpeakingCharacterName: Mohammed
+    ConversationText: Yah, He is just fine,
+    Duration: 2
+  - SpeakingCharacterName: Mummy
+    ConversationText: You can heal your Wounds, By drinking from the Fountain
+    Duration: 2
+  - SpeakingCharacterName: Mohammed
+    ConversationText: Thanks for the advice !
+    Duration: 2

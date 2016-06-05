@@ -2,7 +2,7 @@
 using System.Collections;
 
 public enum GameState{
-	Move,
+	Normal,
 	Conversation,
 	Fight
 }
@@ -21,7 +21,7 @@ public class GameStateMaster : Singleton<GameStateMaster> {
 	}
 
 	public bool IsMovable(){
-		return State == GameState.Fight || State == GameState.Move;
+		return State == GameState.Fight || State == GameState.Normal;
 	}
 
 	public event System.Action<GameState> OnStateChange;

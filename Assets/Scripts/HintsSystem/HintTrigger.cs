@@ -7,7 +7,7 @@ public class HintTrigger : MonoBehaviour {
 	public KeyCode key;
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.CompareTag ("Player")) {
+		if (enabled && other.gameObject.CompareTag ("Player")) {
 			HintUI.SetText (HintMsg, gameObject.GetInstanceID());
 		}
 	}

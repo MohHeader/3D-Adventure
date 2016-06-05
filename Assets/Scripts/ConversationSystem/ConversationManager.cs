@@ -10,6 +10,10 @@ public class ConversationManager : Singleton<ConversationManager> {
 	protected ConversationManager () {} 
 
 	void Awake(){
+		LoadConversationUI();
+	}
+
+	void LoadConversationUI(){
 		// Add Conversation Dialog UI
 		GameObject conversationUIGO = Instantiate(Resources.Load<GameObject>("ConversationCanvas")) as GameObject;
 
@@ -26,6 +30,14 @@ public class ConversationManager : Singleton<ConversationManager> {
 	}
 
 	public void StartConversation(Conversation conversation){
+		if(m_ConversationUI == null){
+			LoadConversationUI ();
+		}
+
+		if(GameStateMaster.Instance.State == GameState.Conversation){
+			return;
+		}
+
 		StartCoroutine (DisplayConversation(conversation));
 	}
 

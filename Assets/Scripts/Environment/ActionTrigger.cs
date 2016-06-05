@@ -10,12 +10,16 @@ public class ActionTrigger : MonoBehaviour {
 	public KeyCode 			key;
 
 	bool m_IsPlayerOnTriggerZone;
-
+	bool m_IsUsed;
 
 	void OnTriggerEnter(Collider other){
+		if(OneUse && m_IsUsed)
+			return;
+		
 		if (other.gameObject.CompareTag ("Player")) {
 			m_IsPlayerOnTriggerZone = true;
 			if (AutoSetOn) {
+				m_IsUsed = true;
 				foreach (var action in actions)
 					action.SetOn (this);
 			}
@@ -33,17 +37,13 @@ public class ActionTrigger : MonoBehaviour {
 	}
 
 	void Update(){
+		if(OneUse && m_IsUsed)
+			return;
+		
 		if (m_IsPlayerOnTriggerZone && Input.GetKeyDown (key)) {
+			m_IsUsed = true;
 			foreach (var action in actions) {
 				action.SetOn (this);
-
-				if (OneUse) {
-					HintTrigger hint = action.gameObject.GetComponent<HintTrigger> ();
-					if (hint != null) {
-						HintUI.ClearText (action.gameObject.GetInstanceID ());
-						Destroy (hint);
-					}
-				}
 			}
 		}
 	}

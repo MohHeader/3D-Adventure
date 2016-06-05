@@ -11,13 +11,23 @@ public class Health : MonoBehaviour {
 	}
 
 	public void TakeDamage(float amount){
-		CurrentHealth -= amount;
-
-		if (OnHealthChange != null)
-			OnHealthChange ();
+		ChangeHealthBy (-amount);
 
 		if (CurrentHealth <= 0)
 			Death ();
+	}
+
+	public void Heal(float amount){
+		ChangeHealthBy (amount);	
+	}
+
+	void ChangeHealthBy(float amount){
+		CurrentHealth += amount;
+
+		CurrentHealth = Mathf.Clamp (CurrentHealth, 0, MaxHealth);
+
+		if (OnHealthChange != null)
+			OnHealthChange ();
 	}
 
 	public void Reset(){
@@ -25,8 +35,11 @@ public class Health : MonoBehaviour {
 	}
 
 	void Death(){
+		if (OnDeath != null)
+			OnDeath ();
 		Destroy (gameObject);
 	}
 
 	public event System.Action OnHealthChange;
+	public event System.Action OnDeath;
 }

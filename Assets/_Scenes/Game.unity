@@ -314,57 +314,7 @@ Transform:
   - {fileID: 2026114450}
   - {fileID: 560940323}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
---- !u!1001 &148451613
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -2.794609
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.3913345
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 413272, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6526676, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_Size.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6526676, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-      propertyPath: m_Center.y
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6a5b1fecba5b8440e96907462718d654, type: 2}
-  m_IsPrefabParent: 0
+  m_RootOrder: 4
 --- !u!1 &149070770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2085,7 @@ RectTransform:
   m_Children:
   - {fileID: 1693685105}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -3187,7 +3137,7 @@ Transform:
   - {fileID: 676461631}
   - {fileID: 1867757238}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &1580595496
 Prefab:
   m_ObjectHideFlags: 0
@@ -3942,7 +3892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81c76112c56148029bf0277db03975f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WelcomeText: Welcome to the Adventure !
+  WelcomeConversation: {fileID: 11400000, guid: ee14714e32da94dba8f9c22c28ceb9ef,
+    type: 2}
 --- !u!1 &2104922785
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,7 +3930,7 @@ Transform:
   - {fileID: 996276497}
   - {fileID: 149070771}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &2104922787
 MonoBehaviour:
   m_ObjectHideFlags: 0

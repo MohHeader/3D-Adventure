@@ -32,18 +32,8 @@ public class PlayerShooting : MonoBehaviour
 		if (Input.GetButtonDown ("Fire1")) {
 			Vector3 Direction = Vector3.zero;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
-//			RaycastHit[] hits = Physics.RaycastAll (ray, 100);
-//
-//			foreach(RaycastHit hit in hits){
-//
-//				if (hit.transform.CompareTag ("Ground")) {
-//					Direction = hit.point - ShootPosition.transform.position;
-//					Direction.y = 0;
-//				}
-//			}
 
 			float _hitDistance;
-
 			zeroYPlane.Raycast(ray, out _hitDistance);
 			Vector3 MousePosition = ray.GetPoint(_hitDistance);
 

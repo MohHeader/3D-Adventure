@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class EnemySpawner : TriggerAction {
 	public Transform[]		SpawnPositions;
 	public Enemy			EnemyPrefab;
-	public List<Enemy>	Enemies;
+	public List<Enemy>		Enemies;
 	public int				MaxConcurrentEmenies;
 
 	bool m_IsOn;

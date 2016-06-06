@@ -29,6 +29,14 @@ public class PlayerMovement : MonoBehaviour {
 		moveDirection.y -= Gravity * Time.deltaTime;
 		m_CharacterController.Move(moveDirection * Time.deltaTime);
 
+		// prevent standing up in crouch-only zones
+		if (!Crouch) {
+			Ray crouchRay = new Ray(m_CharacterController.bounds.center, Vector3.up);
+			if (Physics.SphereCast(crouchRay, m_CharacterController.radius * 0.5f, m_CharacterController.bounds.size.y)) {
+				Crouch = true;
+			}
+		}
+
 		if (Crouch) {
 			transform.localScale = new Vector3 (1,0.4f,1);
 		} else {

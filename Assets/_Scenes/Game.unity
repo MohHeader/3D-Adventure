@@ -552,6 +552,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 128376750}
   - 114: {fileID: 128376752}
+  - 114: {fileID: 128376751}
   m_Layer: 0
   m_Name: _Scripts
   m_TagString: Untagged
@@ -573,6 +574,17 @@ Transform:
   - {fileID: 560940323}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &128376751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128376749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b9aeb75cd314f5aabb18ec4e30a938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &128376752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,6 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversationText: {fileID: 11400000, guid: 52648cb6a54fa4e4cb87a7e36d686863, type: 2}
+  ConversationCanvas: {fileID: 0}
 --- !u!114 &249786536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversationText: {fileID: 11400000, guid: cbeeee9b2fd4d402aad83e82f0ca1f3c, type: 2}
+  ConversationCanvas: {fileID: 0}
 --- !u!114 &249786539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2841,7 +2855,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 690014715}
   m_LocalRotation: {x: 0.23911764, y: 0.36964384, z: -0.099045776, w: 0.8923991}
-  m_LocalPosition: {x: 2.4, y: 0, z: 2.6}
+  m_LocalPosition: {x: 2.8, y: 0, z: 1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 237835066}
@@ -4706,6 +4720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConversationText: {fileID: 11400000, guid: aff154ff25cc54619aa4351002ef55a4, type: 2}
+  ConversationCanvas: {fileID: 11400000, guid: a2c3bc3e60c6b4405ab8624beba451a0, type: 2}
 --- !u!114 &1420106675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6702,7 +6717,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104922785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 0, z: 1.1}
+  m_LocalPosition: {x: -0.3, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 996276497}
@@ -6802,7 +6817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce555013d2af41f485ce53191a7aa7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: d7df877589cdf4ad983d3ea472f41e24, type: 2}
+  Weapon: {fileID: 0}
   ShootPosition: {fileID: 149070771}
 --- !u!120 &2104922794
 LineRenderer:

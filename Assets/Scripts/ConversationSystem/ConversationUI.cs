@@ -12,7 +12,11 @@ public class ConversationUI : MonoBehaviour {
 	}
 
 	public void SetConversation(ConversationEntry entry){
-		SpeakerName.text = entry.SpeakingCharacterName;
-		ConversationEntryText.text = entry.ConversationText;
+		SetConversation (entry.SpeakingCharacterName, entry.ConversationText);
+	}
+
+	public void SetConversation(string name, string value){
+		SpeakerName.text = name;
+		ConversationEntryText.text = value;
 	}
 }

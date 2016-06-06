@@ -1,0 +1,691 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c2324a9ab1224ebe3edad393e3544, type: 3}
+  m_Name: LastSession
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 11494466}
+  - {fileID: 11462402}
+  - {fileID: 11409228}
+  - {fileID: 11474212}
+  - {fileID: 11410206}
+  - {fileID: 11487866}
+  - {fileID: 11409826}
+  - {fileID: 11447058}
+  - {fileID: 11469678}
+  - {fileID: 11497702}
+  - {fileID: 11493348}
+--- !u!114 &11405696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11410206}
+  side: 1
+  sidePosition: 25
+  sideOffset: 0
+  connections:
+  - {fileID: 11429558}
+  - {fileID: 11445352}
+  type: Flow
+--- !u!114 &11408736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11409228}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11496484}
+  type: Flow
+--- !u!114 &11409228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 107.25998
+    y: -380.96994
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11408736}
+  - {fileID: 11445352}
+  Inputs:
+  - {fileID: 11445352}
+  Outputs:
+  - {fileID: 11408736}
+  Name: Mummy
+  Value: Go away, I don't want to talk now
+--- !u!114 &11409826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -48.09999
+    y: -170.96994
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11498294}
+  - {fileID: 11481288}
+  Inputs:
+  - {fileID: 11481288}
+  Outputs:
+  - {fileID: 11498294}
+  Name: Mummy
+  Value: Are you sure of that !
+--- !u!114 &11410206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34881c5ef1f5a472483d74a9a9996744, type: 3}
+  m_Name: Start Conversation
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 56.26001
+    y: -504.97
+    width: 50
+    height: 50
+  nodeKnobs:
+  - {fileID: 11405696}
+  Inputs: []
+  Outputs:
+  - {fileID: 11405696}
+--- !u!114 &11414728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11447058}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11479824}
+  type: Flow
+--- !u!114 &11415758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11447058}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11489214}
+  type: Flow
+--- !u!114 &11415966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11474212}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11481288}
+  - {fileID: 11448304}
+  type: Flow
+--- !u!114 &11424544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11493348}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11440848}
+  type: Flow
+--- !u!114 &11429558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11474212}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11405696}
+  type: Flow
+--- !u!114 &11430424
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11494466}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections: []
+  type: Flow
+--- !u!114 &11439266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  parentEditor: {fileID: 0}
+  drawing: 1
+  selectedNode: {fileID: 0}
+  panOffset: {x: 85.75998, y: -230.97003}
+  zoom: 1.28
+--- !u!114 &11440848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11497702}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11424544}
+  type: Flow
+--- !u!114 &11442532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11462402}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections: []
+  type: Flow
+--- !u!114 &11445352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11409228}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11405696}
+  type: Flow
+--- !u!114 &11447058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -375.9749
+    y: 7.1300955
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11415758}
+  - {fileID: 11414728}
+  Inputs:
+  - {fileID: 11414728}
+  Outputs:
+  - {fileID: 11415758}
+  Name: Mohammed
+  Value: No !
+--- !u!114 &11448304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11487866}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11415966}
+  type: Flow
+--- !u!114 &11449908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11469678}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections: []
+  type: Flow
+--- !u!114 &11457338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11494466}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11465336}
+  type: Flow
+--- !u!114 &11462402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 287.25995
+    y: -197.22997
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11442532}
+  - {fileID: 11496484}
+  Inputs:
+  - {fileID: 11496484}
+  Outputs:
+  - {fileID: 11442532}
+  Name: Mummy
+  Value: Maybe, you can talk with me after few seconds
+--- !u!114 &11465336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11493348}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11457338}
+  type: Flow
+--- !u!114 &11469678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -454.285
+    y: 208.50992
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11449908}
+  - {fileID: 11489214}
+  Inputs:
+  - {fileID: 11489214}
+  Outputs:
+  - {fileID: 11449908}
+  Name: Mummy
+  Value: Then Go Away !
+--- !u!114 &11474212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -287.74
+    y: -368.97
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11415966}
+  - {fileID: 11429558}
+  Inputs:
+  - {fileID: 11429558}
+  Outputs:
+  - {fileID: 11415966}
+  Name: Mohammed
+  Value: Hi, Nice to see you
+--- !u!114 &11478244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11497702}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11498294}
+  type: Flow
+--- !u!114 &11479824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11487866}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11414728}
+  type: Flow
+--- !u!114 &11481288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11409826}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11415966}
+  type: Flow
+--- !u!114 &11487866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -439.47488
+    y: -169.31995
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11479824}
+  - {fileID: 11448304}
+  Inputs:
+  - {fileID: 11448304}
+  Outputs:
+  - {fileID: 11479824}
+  Name: Mummy
+  Value: Do you know me ?!
+--- !u!114 &11489214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11469678}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11415758}
+  type: Flow
+--- !u!114 &11493348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -27.50008
+    y: 211.21988
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11465336}
+  - {fileID: 11424544}
+  Inputs:
+  - {fileID: 11424544}
+  Outputs:
+  - {fileID: 11465336}
+  Name: Mummy
+  Value: Hmmm, Let me tell you a secret
+--- !u!114 &11494466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: 18.41501
+    y: 382.50974
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11430424}
+  - {fileID: 11457338}
+  Inputs:
+  - {fileID: 11457338}
+  Outputs:
+  - {fileID: 11430424}
+  Name: Mummy
+  Value: Hold Shift, to RUN !
+--- !u!114 &11496484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4caff27366054dd44a30ddb5be369acc, type: 3}
+  m_Name: InPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11462402}
+  side: 3
+  sidePosition: 125
+  sideOffset: 0
+  connection: {fileID: 11408736}
+  type: Flow
+--- !u!114 &11497702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5dcb9c488f84d47934f883aa4b5f1f, type: 3}
+  m_Name: Conversation Entry
+  m_EditorClassIdentifier: 
+  rect:
+    serializedVersion: 2
+    x: -94.00494
+    y: 8.690011
+    width: 250
+    height: 100
+  nodeKnobs:
+  - {fileID: 11440848}
+  - {fileID: 11478244}
+  Inputs:
+  - {fileID: 11478244}
+  Outputs:
+  - {fileID: 11440848}
+  Name: Mohammed
+  Value: Yup, Sure !
+--- !u!114 &11498294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7026d0da7df848ab67d517ac12d74, type: 3}
+  m_Name: OutPut
+  m_EditorClassIdentifier: 
+  body: {fileID: 11409826}
+  side: 1
+  sidePosition: 125
+  sideOffset: 0
+  connections:
+  - {fileID: 11478244}
+  type: Flow

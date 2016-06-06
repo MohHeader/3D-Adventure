@@ -53,7 +53,8 @@ public class ConversationManager : Singleton<ConversationManager> {
 		GameStateMaster.Instance.SetState (oldState);
 	}
 
-
+	// Currently it is working only in Unity Editor
+	#if UNITY_EDITOR
 	public void StartConversation(NodeEditorFramework.NodeCanvas conversation){
 		if(m_ConversationUI == null){
 			LoadConversationUI ();
@@ -106,4 +107,5 @@ public class ConversationManager : Singleton<ConversationManager> {
 		}
 		return null;
 	}
+	#endif
 }

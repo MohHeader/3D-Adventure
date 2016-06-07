@@ -34,6 +34,9 @@ public class Player : MonoBehaviour {
 	}
 
 	public void EquipWeapon(WeaponItem weapon){
+		if(!Inventory.HasItem(weapon.ItemName)){
+			Inventory.AddItem (weapon);
+		}
 		m_PlayerShooting.Weapon = weapon;
 	}
 }

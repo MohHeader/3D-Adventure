@@ -5,6 +5,7 @@ public class ConversationAction : TriggerAction {
 	public Conversation ConversationText;
 	public NodeEditorFramework.NodeCanvas ConversationCanvas;
 
+	// Starts a Conversation Dialog
 	public override void SetOn (ActionTrigger trigger) {
 		#if UNITY_EDITOR
 		if (ConversationCanvas != null) {

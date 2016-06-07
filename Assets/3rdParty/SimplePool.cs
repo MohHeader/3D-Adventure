@@ -94,7 +94,7 @@ public static class SimplePool {
 					//     NOTE: This could be prevented with a DontDestroyOnLoad
 					//	   if you really don't want this.
 					// No worries -- we'll just try the next one in our sequence.
-
+					Debug.LogWarning("The inactive object we expected to find no longer exists");
 					return Spawn(pos, rot);
 				}
 			}

@@ -18,6 +18,7 @@ public class HintTrigger : MonoBehaviour {
 	}
 
 	void OnDisable(){
-		HintUI.Instance.ClearText (gameObject);
+		if(HintUI.Instance != null)
+			HintUI.Instance.ClearText (gameObject);
 	}
 }

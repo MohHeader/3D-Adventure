@@ -9,12 +9,14 @@ public abstract class Enemy : MonoBehaviour {
 		if (health != null) {
 			health.OnDeath += delegate() {
 				if(OnDeath != null)
-					OnDeath();
+					OnDeath(this);
+
+				OnDeath = null;
 			};
 		}
 	}
 
 	public abstract void SetTarget (Player player);
 
-	public event System.Action OnDeath;
+	public event System.Action<Enemy> OnDeath;
 }

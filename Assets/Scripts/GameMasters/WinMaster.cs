@@ -14,7 +14,7 @@ public class WinMaster : MonoBehaviour {
 
 	void CheckWinState(GameState state){
 		if(state == GameState.Win){
-			HintUI.Instance.SetText("You Won !! Perfect", gameObject);
+			HintUI.Instance.SetText("You Won !! Perfect ,,,, Esc to Quit", gameObject);
 		}
 	}
 }

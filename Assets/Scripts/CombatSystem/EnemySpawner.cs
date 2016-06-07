@@ -10,6 +10,10 @@ public class EnemySpawner : TriggerAction {
 	bool			m_IsOn;
 	List<Enemy>		m_CurrentEnemies;
 
+	void Awake(){
+		m_CurrentEnemies = new List<Enemy> ();
+	}
+
 	public override void SetOn (ActionTrigger trigger) {
 		m_IsOn = true;
 		StartCoroutine ("Spawn");
@@ -22,14 +26,16 @@ public class EnemySpawner : TriggerAction {
 			if (enemy != null)
 				SimplePool.Despawn (enemy.gameObject);
 		}
+		m_CurrentEnemies.Clear ();
 	}
 
 	IEnumerator Spawn(){
 		while (m_IsOn) {
-			// Check if we have sapce to spawn new enemy based on MaxConcurrentEmenies
+			// Check if we have space to spawn new enemy based on MaxConcurrentEmenies
 			if(MaxConcurrentEmenies <= 0 || m_CurrentEnemies.Count < MaxConcurrentEmenies){
 				
 				Vector3 pos = SpawnPositions [Random.Range (0, SpawnPositions.Length)].position; // Select Random position
+
 				GameObject GO = SimplePool.Spawn (EnemyPrefab.gameObject, pos, Quaternion.identity); // Spawn from Object Pool
 				Enemy enemy = GO.GetComponent<Enemy> ();
 
@@ -37,9 +43,10 @@ public class EnemySpawner : TriggerAction {
 
 				m_CurrentEnemies.Add (enemy);
 
-				enemy.OnDeath += delegate() {
-					if(m_CurrentEnemies.Contains(enemy))
-						m_CurrentEnemies.Remove(enemy);
+				enemy.OnDeath += delegate(Enemy _enemy) {
+					if(m_CurrentEnemies.Contains(_enemy)){
+						m_CurrentEnemies.Remove(_enemy);
+					}
 				};
 			}
 			yield return new WaitForSeconds (Random.Range (1f, 2.5f));

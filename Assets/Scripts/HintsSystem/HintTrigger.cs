@@ -3,24 +3,21 @@ using System.Collections;
 
 [RequireComponent(typeof(Collider))]
 public class HintTrigger : MonoBehaviour {
-	public string HintMsg;
-	public KeyCode key;
+	public string HintMsg;					// The Message that will show it to the player.
 
 	void OnTriggerEnter(Collider other){
 		if (enabled && other.gameObject.CompareTag ("Player")) {
-			HintUI.SetText (HintMsg, gameObject.GetInstanceID());
+			HintUI.Instance.SetText (HintMsg, gameObject);
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if (other.gameObject.CompareTag ("Player")) {
-			HintUI.ClearText (gameObject.GetInstanceID());
+			HintUI.Instance.ClearText (gameObject);
 		}
 	}
 
-	void Update(){
-		if (Input.GetKeyDown (key)) {
-			HintUI.ClearText (gameObject.GetInstanceID());
-		}
+	void OnDisable(){
+		HintUI.Instance.ClearText (gameObject);
 	}
 }

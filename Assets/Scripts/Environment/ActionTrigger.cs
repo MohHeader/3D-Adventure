@@ -3,25 +3,20 @@ using System.Collections;
 
 [RequireComponent(typeof(BoxCollider))]
 public class ActionTrigger : MonoBehaviour {
-	public TriggerAction[]	actions;
-	public bool 			AutoSetOn;
-	public bool 			AutoSetOff;
-	public bool 			OneUse;
-	public KeyCode 			key;
+	public TriggerAction[]	Actions;		// List of actions that will be triggered
+	public bool 			AutoSetOn;		// If Auto-ON, will trigger the ON action with OnTriggerEnter
+	public bool 			AutoSetOff;		// If Auto-OFF, will trigger the OFF action with OnTriggerExit
+	public bool 			OneUse;			// Should ( ON action be of one use only )
+	public KeyCode 			InputKeyCode;	// Input KeyCode that will trigger the action
 
-	bool m_IsPlayerOnTriggerZone;
-	bool m_IsUsed;
+	bool m_IsPlayerOnTriggerZone;			// Check if Player is in TriggerZone, used to align with Key Press
+	bool m_IsUsed;							// Check if actions already triggered,used to align with OneUse
 
 	void OnTriggerEnter(Collider other){
-		if(OneUse && m_IsUsed)
-			return;
-		
 		if (other.gameObject.CompareTag ("Player")) {
 			m_IsPlayerOnTriggerZone = true;
 			if (AutoSetOn) {
-				m_IsUsed = true;
-				foreach (var action in actions)
-					action.SetOn (this);
+				TriggerOn ();
 			}
 		}
 	}
@@ -30,25 +25,30 @@ public class ActionTrigger : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player")) {
 			m_IsPlayerOnTriggerZone = false;
 			if (AutoSetOff) {
-				foreach (var action in actions)
+				foreach (var action in Actions)
 					action.SetOff ();
 			}
 		}
 	}
 
 	void Update(){
-		if(OneUse && m_IsUsed)
-			return;
-		
-		if (m_IsPlayerOnTriggerZone && Input.GetKeyDown (key)) {
-			m_IsUsed = true;
-			foreach (var action in actions) {
-				action.SetOn (this);
-			}
+		if (m_IsPlayerOnTriggerZone && Input.GetKeyDown (InputKeyCode)) {
+			TriggerOn ();
 		}
 	}
 
-	public void OnAnimationComplete(TriggerAction action){
+	void TriggerOn(){
+		if(OneUse && m_IsUsed)
+			return;
+
+		m_IsUsed = true;
+		foreach (var action in Actions) {
+			action.SetOn (this);
+		}
+	}
+
+	// Some Actions would need to TriggerOff it self, if AutoSetOff == true && Player is outside the TriggerZone;
+	public void OnSetOnAnimationComplete(TriggerAction action){
 		if(AutoSetOff && !m_IsPlayerOnTriggerZone)
 			action.SetOff();
 	}

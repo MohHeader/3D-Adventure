@@ -5,10 +5,10 @@ using System.Collections.Generic;
 public class EnemySpawner : TriggerAction {
 	public Transform[]		SpawnPositions;
 	public Enemy			EnemyPrefab;
-	public List<Enemy>		Enemies;
-	public int				MaxConcurrentEmenies;
+	public int				MaxConcurrentEmenies;	// if Set to <= 0, will be treated as unlimited/Infinity
 
-	bool m_IsOn;
+	bool			m_IsOn;
+	List<Enemy>		m_CurrentEnemies;
 
 	public override void SetOn (ActionTrigger trigger) {
 		m_IsOn = true;
@@ -18,7 +18,7 @@ public class EnemySpawner : TriggerAction {
 	public override void SetOff () {
 		m_IsOn = false;
 
-		foreach (var enemy in Enemies) {
+		foreach (var enemy in m_CurrentEnemies) {
 			if (enemy != null)
 				SimplePool.Despawn (enemy.gameObject);
 		}
@@ -26,18 +26,20 @@ public class EnemySpawner : TriggerAction {
 
 	IEnumerator Spawn(){
 		while (m_IsOn) {
-			if(MaxConcurrentEmenies <= 0 || Enemies.Count < MaxConcurrentEmenies){
-				Vector3 pos = SpawnPositions [Random.Range (0, SpawnPositions.Length)].position;
-				GameObject GO = SimplePool.Spawn (EnemyPrefab.gameObject, pos, Quaternion.identity);
+			// Check if we have sapce to spawn new enemy based on MaxConcurrentEmenies
+			if(MaxConcurrentEmenies <= 0 || m_CurrentEnemies.Count < MaxConcurrentEmenies){
+				
+				Vector3 pos = SpawnPositions [Random.Range (0, SpawnPositions.Length)].position; // Select Random position
+				GameObject GO = SimplePool.Spawn (EnemyPrefab.gameObject, pos, Quaternion.identity); // Spawn from Object Pool
 				Enemy enemy = GO.GetComponent<Enemy> ();
 
-				enemy.SetTarget (GameMaster.Instance.CurrentPlayer);
+				enemy.SetTarget (GameMaster.CurrentPlayer);
 
-				Enemies.Add (enemy);
+				m_CurrentEnemies.Add (enemy);
 
 				enemy.OnDeath += delegate() {
-					if(Enemies.Contains(enemy))
-						Enemies.Remove(enemy);
+					if(m_CurrentEnemies.Contains(enemy))
+						m_CurrentEnemies.Remove(enemy);
 				};
 			}
 			yield return new WaitForSeconds (Random.Range (1f, 2.5f));

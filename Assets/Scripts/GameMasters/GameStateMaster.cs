@@ -15,13 +15,22 @@ public class GameStateMaster : Singleton<GameStateMaster> {
 	//can't use the constructor!
 	protected GameStateMaster(){}
 
+	void Awake(){
+		Reset ();
+	}
+
+	public void Reset(){
+		SetState(GameState.Normal);
+	}
+
 	public void SetState(GameState state){
 		State = state;
 		if (OnStateChange != null)
 			OnStateChange (state);
 	}
 
-	public bool IsMovable(){
+	public bool IsPlayable(){
+		// Check what States the game is playable ( i.e. the user can interact with it, and move the characcter for example )
 		return State == GameState.Fight || State == GameState.Normal;
 	}
 

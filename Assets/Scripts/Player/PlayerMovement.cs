@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour {
 		m_CharacterController = GetComponent<CharacterController> ();
 	}
 
-	public void Move(Vector3 Move, bool Jump, bool Run, bool Crouch){
-		if(!GameStateMaster.Instance.IsMovable() )
+	public void Move(Vector3 Move, bool Jump, bool Run){
+		if(!GameStateMaster.Instance.IsPlayable() )
 			return;
 		
 		if (m_CharacterController.isGrounded) {
@@ -28,7 +28,9 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		moveDirection.y -= Gravity * Time.deltaTime;
 		m_CharacterController.Move(moveDirection * Time.deltaTime);
+	}
 
+	public void Crouch(bool Crouch){
 		// prevent standing up in crouch-only zones
 		if (!Crouch) {
 			Ray crouchRay = new Ray(m_CharacterController.bounds.center, Vector3.up);

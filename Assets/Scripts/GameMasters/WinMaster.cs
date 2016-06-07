@@ -4,17 +4,17 @@ using System.Collections;
 public class WinMaster : MonoBehaviour {
 
 	void Awake(){
-		GameStateMaster.Instance.OnStateChange += CheckState;
+		GameStateMaster.Instance.OnStateChange += CheckWinState;
 	}
 
 	void OnDestroy(){
 		if(GameStateMaster.Instance != null)
-			GameStateMaster.Instance.OnStateChange -= CheckState;
+			GameStateMaster.Instance.OnStateChange -= CheckWinState;
 	}
 
-	void CheckState(GameState state){
+	void CheckWinState(GameState state){
 		if(state == GameState.Win){
-			HintUI.SetText("You Won !! Perfect", gameObject.GetInstanceID());
+			HintUI.Instance.SetText("You Won !! Perfect", gameObject);
 		}
 	}
 }

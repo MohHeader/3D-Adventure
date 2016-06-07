@@ -52,8 +52,9 @@ namespace NodeEditorFramework.Utilities
 				return UnityEditor.AssetDatabase.LoadAllAssetsAtPath (path).OfType<T> ().ToArray ();
 			else
 				return UnityEngine.Resources.LoadAll<T> (path);
-			#endif
+			#else
 			throw new NotImplementedException ("Currently it is not possible to load subAssets at runtime!");
+			#endif
 			 
 		}
 

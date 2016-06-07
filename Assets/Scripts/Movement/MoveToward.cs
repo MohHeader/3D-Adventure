@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class MoveToward : MonoBehaviour {
-	public Transform 	Target;
+	
+	public Transform 	Target;			// The transform that that our object will be moving toward it.
 	public float 		Speed = 5;
 	
 	// Update is called once per frame
@@ -10,6 +11,7 @@ public class MoveToward : MonoBehaviour {
 		if (Target == null)
 			return;
 
-		transform.position += (Target.position - transform.position).normalized * Speed * Time.deltaTime;
+		Vector3 direction = (Target.position - transform.position).normalized;
+		transform.position +=  direction * Speed * Time.deltaTime;
 	}
 }

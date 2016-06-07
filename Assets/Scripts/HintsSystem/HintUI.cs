@@ -2,43 +2,37 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class HintUI : MonoBehaviour {
-	static HintUI Instance;
+public class HintUI : Singleton<HintUI> {
+	Text	m_TextUI;							// Reference for Unity UI Text component.
+	int		m_ActiveInstanceID = -1;			// InstanceID for the last gameobject called HintUI to show a text.
 
-	Text m_TextUI;
-	int m_ActiveInstanceID = -1;
+
+	//Guarantee this will always be a singleton only – 
+	//can't use the constructor!
+	protected HintUI(){}
 
 	// Use this for initialization
 	void Awake () {
-		Instance = this;
 		m_TextUI = GetComponent<Text> ();
 	}
 
-	public static void SetText(string text, int id = -1){
-		Instance.Internal_SetText (text, id);
-	}
-
-	void Internal_SetText(string text, int id){
+	public void SetText(string text, GameObject caller = null){
 		m_TextUI.text = text;
-		m_ActiveInstanceID = id;
 
-		if (id == -1) {
-			Invoke ("Internal_ClearText", 2);				// Self Clear Text if not assigned to ID
+		if (caller == null) {
+			Invoke ("Internal_ClearText", 2);				// Self-Clear Text if no gameobject was assigned
+		} else {
+			m_ActiveInstanceID = caller.GetInstanceID();	// Save InstanceID for caller gameObject
 		}
 	}
 
-	public static void ClearText(int id){
-		Instance.Internal_ClearText (id);
-	}
-
-	void Internal_ClearText(int id){
-		if (id == m_ActiveInstanceID) {
-			m_TextUI.text = "";
-			m_ActiveInstanceID = -1;
+	public void ClearText(GameObject caller){
+		if (caller.GetInstanceID() == m_ActiveInstanceID) {
+			ClearText ();
 		}
 	}
 
-	void Internal_ClearText(){
+	private void ClearText(){
 		m_TextUI.text = "";
 		m_ActiveInstanceID = -1;
 	}

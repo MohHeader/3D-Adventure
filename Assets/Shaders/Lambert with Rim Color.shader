@@ -1,4 +1,4 @@
-﻿Shader "Unlit/SingleColor"
+﻿Shader "Custom/SimpleLambert w/ Rim Color"
 {
     Properties
     {
@@ -14,7 +14,7 @@
             Name "Behind"
             Tags { "RenderType"="transparent" "Queue" = "Transparent" }
             Blend SrcAlpha OneMinusSrcAlpha
-            ZTest Greater               // here the check is for the pixel being greater or closer to the camera, in which
+            ZTest Always               // here the check is for the pixel being greater or closer to the camera, in which
             Cull Back                   // case the model is behind something, so this pass runs
             ZWrite Off
             LOD 200                    
@@ -101,10 +101,7 @@
             	o.pos = mul(UNITY_MATRIX_MVP , v.vertex);
                 return o;
             }
-            
 
-
-            // pixel shader, no inputs needed
             float4 frag (vertexOutput i ) : COLOR
             {
                 return i.col; // just return it

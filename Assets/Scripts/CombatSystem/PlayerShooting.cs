@@ -5,27 +5,26 @@ public class PlayerShooting : MonoBehaviour
 	public WeaponItem	Weapon;
 	public Transform 	ShootPosition;
 
-	float 			timer;                             // A timer to determine when to fire.
-	float 			effectsDisplayTime = 0.2f;         // The proportion of the timeBetweenBullets that the effects will display for.
-	int  			shootableMask;
-	LineRenderer 	gunLine;                           // Reference to the line renderer.
-
-	private Plane zeroYPlane;
+	float 			m_Timer;							// A timer to determine when to fire.
+	float 			m_EffectsDisplayTime = 0.2f;		// The proportion of the timeBetweenBullets that the effects will display for.
+	int  			m_ShootableMask;					// Physics layer that would receive bullets ( example : walls, enemies, etc.. )
+	LineRenderer 	m_gunLine;							// Reference to the line renderer.
+	Plane 			m_ZeroYPlane;						// A plane on the Y-level of ShootingPosition, to calculate shooting direction
 
 	void Awake () {
 		// Set up the references.
-		gunLine = GetComponent <LineRenderer> ();
-		shootableMask = LayerMask.GetMask ("Environment", "Shootable");
+		m_gunLine = GetComponent <LineRenderer> ();
+		m_ShootableMask = LayerMask.GetMask ("Environment", "Shootable");
 
-		zeroYPlane = new Plane (Vector3.up, ShootPosition.position);
+		m_ZeroYPlane = new Plane (Vector3.up, ShootPosition.position);
 	}
 
 	void Update () {
 		// Add the time since Update was last called to the timer.
-		timer += Time.deltaTime;
+		m_Timer += Time.deltaTime;
 
 		if (Weapon == null) {
-			gunLine.enabled = false;
+			m_gunLine.enabled = false;
 			return;
 		}
 		
@@ -33,46 +32,42 @@ public class PlayerShooting : MonoBehaviour
 			Vector3 Direction = Vector3.zero;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
 
+			// Find where the user clicked based on the zeroYPlane
 			float _hitDistance;
-			zeroYPlane.Raycast(ray, out _hitDistance);
+			m_ZeroYPlane.Raycast(ray, out _hitDistance);
 			Vector3 MousePosition = ray.GetPoint(_hitDistance);
 
+			// Shooting Direction
 			Direction = MousePosition - ShootPosition.position;
 
 			if (Direction != Vector3.zero) {
-				timer = 0;
+				m_Timer = 0;
+
+				m_gunLine.enabled = true;
+				m_gunLine.SetPosition (0, ShootPosition.position);
 
 				RaycastHit shootHit;
-				gunLine.enabled = true;
-				gunLine.SetPosition (0, ShootPosition.position);
-				// Perform the raycast against gameobjects on the shootable layer and if it hits something...
-				if(Physics.Raycast(ShootPosition.position, Direction, out shootHit, Weapon.Range, shootableMask)){
-					// Try and find an EnemyHealth script on the gameobject hit.
+				if(Physics.Raycast(ShootPosition.position, Direction, out shootHit, Weapon.Range, m_ShootableMask)){
 					Health enemyHealth = shootHit.collider.GetComponent <Health> ();
 
-					// If the EnemyHealth component exist...
 					if (enemyHealth != null) {
-						// ... the enemy should take damage.
 						enemyHealth.TakeDamage (Weapon.DamageAmount);
-						gunLine.SetPosition (1, enemyHealth.transform.position);
+						m_gunLine.SetPosition (1, enemyHealth.transform.position);
 					} else {
-						gunLine.SetPosition (1, shootHit.point);
+						m_gunLine.SetPosition (1, shootHit.point);
 					}
-
-					// Set the second position of the line renderer to the point the raycast hit.
-
 				}
-				// If the raycast didn't hit anything on the shootable layer...
+				// If the raycast didn't hit anything on the shootable layer
 				else {
-					// ... set the second position of the line renderer to the fullest extent of the gun's range.
-					gunLine.SetPosition (1, ShootPosition.position + Direction * Weapon.Range);
+					//set the second position of the line renderer to the fullest extent of the gun's range.
+					m_gunLine.SetPosition (1, ShootPosition.position + Direction * Weapon.Range);
 				}
 			}
 		}
 			
-		// If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
-		if (timer >= Weapon.CoolDownTime * effectsDisplayTime) {
-			gunLine.enabled = false;
+		// If the timer has exceeded the proportion of Weapon.CoolDownTime that the effects should be displayed for
+		if (m_Timer >= Weapon.CoolDownTime * m_EffectsDisplayTime) {
+			m_gunLine.enabled = false;
 		}
 	}
 }

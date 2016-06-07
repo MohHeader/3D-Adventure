@@ -2,13 +2,11 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameMaster : Singleton<GameMaster> {
-	public Player CurrentPlayer;
+public static class GameMaster {
+	public static Player CurrentPlayer;			// Reference to Current Player
 
-	protected GameMaster(){}
-
-	public void Restart(){
-		GameStateMaster.Instance.SetState (GameState.Normal);
+	public static void Restart(){
+		GameStateMaster.Instance.Reset();
 		SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 	}
 }

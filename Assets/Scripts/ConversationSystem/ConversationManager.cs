@@ -2,7 +2,6 @@
 using UnityEngine;
 
 public class ConversationManager : Singleton<ConversationManager> {
-	ConversationEntry	m_CurrentConversationLine;	//The current line of text being displayed
 	ConversationUI		m_ConversationUI;			// The ConversationUI ( the GUI part )
 
 	//Guarantee this will always be a singleton only – 
@@ -18,14 +17,14 @@ public class ConversationManager : Singleton<ConversationManager> {
 		GameObject conversationUIGO = Instantiate(Resources.Load<GameObject>("ConversationCanvas")) as GameObject;
 
 		if (conversationUIGO == null) {
-			Debug.LogError ("Resources/ConversationCanvas Doesn't exist !");
+			Debug.LogError ("Resources/ConversationCanvas Prefab Doesn't exist !");
 			return;
 		}
 
 		m_ConversationUI = conversationUIGO.GetComponentInChildren<ConversationUI> ();
 
 		if (m_ConversationUI == null) {
-			Debug.LogError ("Resources/ConversationCanvas Doesn't contain ConversationUI in it's children !");
+			Debug.LogError ("Resources/ConversationCanvas Prefab Doesn't contain ConversationUI in it's children !");
 		}
 	}
 
@@ -44,15 +43,20 @@ public class ConversationManager : Singleton<ConversationManager> {
 	IEnumerator DisplayConversation(Conversation conversation){
 		GameState oldState = GameStateMaster.Instance.State;
 		GameStateMaster.Instance.SetState (GameState.Conversation);
+
 		m_ConversationUI.gameObject.SetActive (true);
+
 		foreach (var conversationLine in conversation.ConversationLines) {
 			m_ConversationUI.SetConversation (conversationLine);
 			yield return new WaitForSeconds(conversationLine.Duration);
 		}
+
 		m_ConversationUI.gameObject.SetActive (false);
+
 		GameStateMaster.Instance.SetState (oldState);
 	}
 
+	#region NodeBased Conversation
 	// Currently it is working only in Unity Editor
 	#if UNITY_EDITOR
 	public void StartConversation(NodeEditorFramework.NodeCanvas conversation){
@@ -99,13 +103,12 @@ public class ConversationManager : Singleton<ConversationManager> {
 	}
 
 	EntryNode GetNext(NodeEditorFramework.Node node){
-		print ("node.Outputs.Count : " + node.Outputs.Count);
 		if (node.Outputs.Count > 0) {
-			print ("node.Outputs[0].connections.Count : " + node.Outputs[0].connections.Count);
 			if(node.Outputs [0].connections.Count > 0)
 				return node.Outputs [0].connections [Random.Range (0, node.Outputs [0].connections.Count)].body as EntryNode;
 		}
 		return null;
 	}
 	#endif
+	#endregion
 }
